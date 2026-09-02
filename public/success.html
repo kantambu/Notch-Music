@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Your Notch Music key</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23101820'/%3E%3Cpath d='M4 22 L9 22 L11 12 L13 22 L15 22 L17 6 L19 26 L21 22 L28 22' fill='none' stroke='%235FC3B0' stroke-width='2.4' stroke-linejoin='round' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,300..700,0..100&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+:root{--ink:#101820;--ink-2:#16222e;--line:#2a3a4a;--text:#eef2f5;--muted:#a3b1bf;--dim:#6f8090;--sea:#5fc3b0;--gold:#e8b44c;--gold-ink:#1a1408;
+  --display:"Fraunces",Georgia,serif;--body:"IBM Plex Sans","Helvetica Neue",Arial,sans-serif;--mono:"IBM Plex Mono",Consolas,Menlo,monospace}
+*{box-sizing:border-box}
+body{margin:0;background:var(--ink);color:var(--text);font-family:var(--body);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:var(--sea)}
+.wrap{max-width:680px;margin:0 auto;padding:48px 24px 80px}
+.brand{display:flex;align-items:center;gap:.6em;text-decoration:none;color:var(--text);font-family:var(--display);font-size:1.3rem;margin-bottom:40px}
+.brand svg{width:30px;height:30px}
+.eyebrow{font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--sea);font-weight:600}
+h1{font-family:var(--display);font-weight:400;font-size:clamp(2rem,5vw,3rem);line-height:1.1;margin:10px 0 14px;text-wrap:balance}
+p{margin:0 0 14px;color:var(--muted)}
+.card{background:var(--ink-2);border:1px solid var(--line);border-radius:14px;padding:26px;margin:26px 0;display:flex;flex-direction:column;gap:18px}
+.label{font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;color:var(--dim);font-weight:600;margin-bottom:6px}
+.key{font-family:var(--mono);font-size:clamp(1.4rem,4.5vw,2rem);letter-spacing:.12em;color:var(--text);background:var(--ink);border:1px dashed var(--line);border-radius:8px;padding:14px 18px;display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5em;padding:.9em 1.4em;border-radius:6px;font-weight:600;text-decoration:none;font-size:1rem;border:1px solid transparent;cursor:pointer;font-family:var(--body)}
+.btn-gold{background:var(--gold);color:var(--gold-ink)}
+.btn-ghost{background:transparent;color:var(--text);border-color:var(--line);font-size:.9rem;padding:.55em 1em}
+.email{color:var(--text);font-weight:500}
+.cue{font-weight:700;font-size:1.15rem;margin:0;animation:cue-cycle 3.6s ease-in-out infinite;text-shadow:0 0 12px currentColor}
+@keyframes cue-cycle{0%{color:#e8b44c}33%{color:#5fc3b0}66%{color:#fff}100%{color:#e8b44c}}
+@media (prefers-reduced-motion:reduce){.cue{animation:none;color:var(--gold);text-shadow:none}}
+.fine{font-size:.9rem;color:var(--dim)}
+.hidden{display:none}
+.err{border-color:#b85c5c}
+.spin{display:inline-block;width:14px;height:14px;border:2px solid var(--line);border-top-color:var(--sea);border-radius:50%;animation:sp 1s linear infinite;vertical-align:middle;margin-right:8px}
+@keyframes sp{to{transform:rotate(360deg)}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <a class="brand" href="/"><svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="7" fill="#182432"/><path d="M4 22 L9 22 L11 12 L13 22 L15 22 L17 6 L19 26 L21 22 L28 22" fill="none" stroke="#5fc3b0" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/></svg>Notch Music</a>
+
+  <div id="loading">
+    <span class="eyebrow">One moment</span>
+    <h1>Confirming your payment…</h1>
+    <p><span class="spin"></span>Talking to Stripe. This takes a second or two.</p>
+  </div>
+
+  <div id="ok" class="hidden">
+    <span class="eyebrow">Thank you</span>
+    <h1>Notch Music is yours.</h1>
+    <p>Here is your app link and your key. We've also emailed them to <span class="email" id="email"></span> so you can find them again on any device.</p>
+
+    <div class="card">
+      <div>
+        <div class="label">Your key</div>
+        <div class="key"><span id="key">NM-····-····-····</span><button class="btn btn-ghost" id="copy" type="button">Copy</button></div>
+      </div>
+      <div>
+        <div class="label">Your app</div>
+        <a class="btn btn-gold" id="open" href="#">Open Notch Music →</a>
+      </div>
+      <p class="cue">★ Bookmark the app page when it opens — it's your copy of Notch Music.</p>
+    </div>
+
+    <p>The first time the app opens, enter the email you paid with and this key. The app remembers you on that device; on a new phone or computer, enter the same pair once more.</p>
+    <p class="fine" id="mailnote">Didn't get the email? Check spam, or use "Send my key again" on the app's unlock screen.</p>
+  </div>
+
+  <div id="fail" class="hidden">
+    <span class="eyebrow">Hmm</span>
+    <h1>We couldn't confirm this payment.</h1>
+    <p id="failmsg"></p>
+    <p>If you were charged, your purchase is safe. Send a note through <a href="https://tinnitusfitness.com/#contact">tinnitusfitness.com</a> with the email you paid with and we'll send your key by hand.</p>
+  </div>
+
+  <p class="fine" style="margin-top:40px">Notch Music is an optional practice within the Tinnitus Mental Fitness Model. It is not a medical treatment, device, or cure.</p>
+</div>
+
+<script>
+(async function(){
+  var q=new URLSearchParams(location.search), sid=q.get('session_id');
+  var show=function(id){['loading','ok','fail'].forEach(function(x){document.getElementById(x).classList.toggle('hidden',x!==id);});};
+  if(!sid){document.getElementById('failmsg').textContent='This page needs to be opened from the Stripe checkout.';show('fail');return;}
+  try{
+    var r=await fetch('/.netlify/functions/activate?session_id='+encodeURIComponent(sid));
+    var j=await r.json();
+    if(!j.ok)throw new Error(j.error||'Unknown error');
+    document.getElementById('email').textContent=j.email;
+    document.getElementById('key').textContent=j.key;
+    document.getElementById('open').href=j.appUrl+'#unlock='+encodeURIComponent(btoa(j.email+'|'+j.key));
+    if(!j.emailed)document.getElementById('mailnote').textContent='Keep this page open or write the key down — copy it with the button above.';
+    document.getElementById('copy').onclick=function(){navigator.clipboard.writeText(j.key).then(function(){document.getElementById('copy').textContent='Copied';});};
+    show('ok');
+    // Clean the session id out of the address bar so a bookmark of THIS page doesn't carry it.
+    history.replaceState(null,'',location.pathname);
+  }catch(e){document.getElementById('failmsg').textContent=e.message;show('fail');}
+})();
+</script>
+</body>
+</html>
