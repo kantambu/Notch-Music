@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Notch Music</title>
+<meta name="description" content="Notch Music takes a song you already love and removes the thin sliver of sound at the pitch of your tinnitus — entirely on your own device. One-time $49.95, no subscription, no uploads.">
+<!-- TODO: set the final domain before launch -->
+<link rel="canonical" href="https://YOUR-DOMAIN/">
+<meta property="og:title" content="Notch Music — your favorite songs, tuned to your tinnitus">
+<meta property="og:description" content="Match your tinnitus pitch, pick a song you love, and notch it right in your browser. $49.95 once. No subscription. Your music never leaves your device.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://YOUR-DOMAIN/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23101820'/%3E%3Cpath d='M4 22 L9 22 L11 12 L13 22 L15 22 L17 6 L19 26 L21 22 L28 22' fill='none' stroke='%235FC3B0' stroke-width='2.4' stroke-linejoin='round' stroke-linecap='round'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT@9..144,300..700,0..100&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+:root{
+  --ink:#101820; --ink-2:#16222e; --ink-3:#1e2c3a; --line:#2a3a4a;
+  --text:#eef2f5; --muted:#a3b1bf; --dim:#6f8090;
+  --sea:#5fc3b0; --sea-soft:rgba(95,195,176,.18);
+  --gold:#e8b44c; --gold-ink:#1a1408;
+  --display:"Fraunces",Georgia,"Times New Roman",serif;
+  --body:"IBM Plex Sans","Helvetica Neue",Arial,sans-serif;
+  --max:1120px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--ink);color:var(--text);font-family:var(--body);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:var(--sea)}
+a:focus-visible,button:focus-visible,input:focus-visible,summary:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+h1,h2,h3{font-family:var(--display);font-weight:400;line-height:1.1;margin:0;text-wrap:balance;letter-spacing:-.01em}
+h1{font-size:clamp(2.4rem,5.2vw,4.2rem);font-variation-settings:"SOFT" 60}
+h2{font-size:clamp(1.8rem,3.4vw,2.6rem)}
+h3{font-size:1.25rem;font-variation-settings:"SOFT" 40}
+p{margin:0}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 24px}
+.eyebrow{font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--sea);font-weight:600}
+.lede{color:var(--muted);font-size:1.12rem;max-width:36em}
+.btn{display:inline-flex;align-items:center;gap:.5em;padding:.9em 1.4em;border-radius:6px;font-weight:600;text-decoration:none;font-size:1rem;transition:transform .15s ease,background .15s ease;border:1px solid transparent}
+.btn-gold{background:var(--gold);color:var(--gold-ink)}
+.btn-gold:hover{background:#f2c264;transform:translateY(-1px)}
+.btn-ghost{color:var(--text);border-color:var(--line);background:transparent}
+.btn-ghost:hover{border-color:var(--sea);color:var(--sea)}
+.num{font-variant-numeric:tabular-nums}
+
+/* nav */
+.nav{position:sticky;top:0;z-index:10;background:rgba(16,24,32,.86);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+.brand{display:flex;align-items:center;gap:.6em;text-decoration:none;color:var(--text);font-family:var(--display);font-size:1.3rem;font-variation-settings:"SOFT" 80}
+.brand svg{width:30px;height:30px}
+.nav ul{list-style:none;margin:0;padding:0;display:flex;gap:1.6em;align-items:center}
+.nav ul a{color:var(--muted);text-decoration:none;font-size:.95rem}
+.nav ul a:hover{color:var(--text)}
+.nav .btn{padding:.6em 1em;font-size:.92rem}
+@media (max-width:760px){.nav ul li:not(.cta){display:none}}
+
+/* hero */
+.hero{padding:72px 0 40px}
+.hero .wrap{display:grid;grid-template-columns:1.05fr 1fr;gap:56px;align-items:center}
+.hero-copy{display:flex;flex-direction:column;gap:22px}
+.hero-actions{display:flex;gap:14px;flex-wrap:wrap;align-items:center}
+.hero-fine{color:var(--dim);font-size:.9rem}
+@media (max-width:900px){.hero .wrap{grid-template-columns:1fr;gap:40px}.hero{padding-top:48px}}
+
+/* demo panel */
+.demo{background:var(--ink-2);border:1px solid var(--line);border-radius:12px;padding:20px 20px 16px;display:flex;flex-direction:column;gap:14px}
+.demo-head{display:flex;justify-content:space-between;align-items:baseline;gap:12px}
+.demo-head .eyebrow{color:var(--muted)}
+.readout{font-family:var(--display);font-size:2rem;line-height:1;color:var(--sea);font-variation-settings:"SOFT" 30}
+.readout small{font-family:var(--body);font-size:.85rem;color:var(--muted);margin-left:.35em}
+.demo canvas{width:100%;height:220px;display:block;border-radius:6px;background:var(--ink)}
+.demo-ctrl{display:flex;align-items:center;gap:14px}
+.demo-ctrl label{font-size:.85rem;color:var(--muted);white-space:nowrap}
+input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:4px;border-radius:2px;background:var(--line);outline:none}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:22px;height:22px;border-radius:50%;background:var(--gold);border:3px solid var(--ink-2);cursor:pointer;box-shadow:0 0 0 1px var(--gold)}
+input[type=range]::-moz-range-thumb{width:16px;height:16px;border-radius:50%;background:var(--gold);border:3px solid var(--ink-2);cursor:pointer}
+.demo-note{font-size:.82rem;color:var(--dim)}
+
+/* strip */
+.strip{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--ink-2)}
+.strip .wrap{display:grid;grid-template-columns:repeat(4,1fr);padding-top:22px;padding-bottom:22px;gap:20px}
+.strip div{display:flex;gap:12px;align-items:flex-start;font-size:.95rem;color:var(--muted)}
+.strip strong{display:block;color:var(--text);font-weight:600}
+.strip svg{flex:none;width:22px;height:22px;stroke:var(--sea);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;margin-top:2px}
+@media (max-width:900px){.strip .wrap{grid-template-columns:1fr 1fr}}
+@media (max-width:520px){.strip .wrap{grid-template-columns:1fr}}
+
+/* sections */
+section.block{padding:88px 0}
+.sec-head{display:flex;flex-direction:column;gap:14px;max-width:40em;margin-bottom:44px}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.step{padding:28px 24px;border-right:1px solid var(--line);display:flex;flex-direction:column;gap:12px;background:var(--ink-2)}
+.step:last-child{border-right:0}
+.step .k{font-family:var(--display);font-size:2.2rem;color:var(--sea);line-height:1;font-variation-settings:"SOFT" 80}
+.step p{color:var(--muted);font-size:.97rem}
+@media (max-width:900px){.steps{grid-template-columns:1fr 1fr}.step:nth-child(2){border-right:0}.step:nth-child(-n+2){border-bottom:1px solid var(--line)}}
+@media (max-width:520px){.steps{grid-template-columns:1fr}.step{border-right:0;border-bottom:1px solid var(--line)}.step:last-child{border-bottom:0}}
+
+/* privacy */
+.privacy{background:var(--ink-2);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.privacy .wrap{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+.privacy .art{display:flex;justify-content:center}
+.privacy .art svg{width:100%;max-width:420px;height:auto}
+.privacy .copy{display:flex;flex-direction:column;gap:18px}
+.privacy .copy p{color:var(--muted)}
+.privacy .copy p.big{color:var(--text);font-size:1.15rem}
+@media (max-width:860px){.privacy .wrap{grid-template-columns:1fr}}
+
+/* honest */
+.honest{display:grid;grid-template-columns:1fr 1fr;gap:20px 44px}
+.honest article{display:flex;flex-direction:column;gap:8px;padding:20px 0;border-top:1px solid var(--line)}
+.honest article p{color:var(--muted);font-size:.97rem}
+@media (max-width:760px){.honest{grid-template-columns:1fr}}
+
+/* pricing */
+.price{display:grid;grid-template-columns:1fr 1fr;border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.price .l{padding:40px;background:var(--ink-2);display:flex;flex-direction:column;gap:20px}
+.price .r{padding:40px;display:flex;flex-direction:column;gap:14px;justify-content:center;background:var(--ink-3)}
+.price .amount{font-family:var(--display);font-size:4rem;line-height:1;font-variation-settings:"SOFT" 40}
+.price .amount sup{font-size:1.6rem;vertical-align:top;margin-top:.5rem;display:inline-block;color:var(--muted)}
+.price .amount span{font-family:var(--body);font-size:1rem;color:var(--muted);margin-left:.5em}
+.price ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
+.price li{display:flex;gap:12px;align-items:flex-start;color:var(--muted)}
+.price li svg{flex:none;width:20px;height:20px;stroke:var(--sea);fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round;margin-top:3px}
+.price .fine{font-size:.85rem;color:var(--dim)}
+@media (max-width:760px){.price{grid-template-columns:1fr}.price .l,.price .r{padding:28px}}
+
+/* faq */
+.faq{max-width:46em}
+.faq details{border-top:1px solid var(--line);padding:6px 0}
+.faq details:last-child{border-bottom:1px solid var(--line)}
+.faq summary{cursor:pointer;list-style:none;display:flex;justify-content:space-between;align-items:center;gap:20px;padding:14px 0;font-weight:500;font-size:1.05rem}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";font-family:var(--display);font-size:1.6rem;color:var(--sea);line-height:1;transition:transform .2s}
+.faq details[open] summary::after{transform:rotate(45deg)}
+.faq details p{color:var(--muted);padding:0 0 16px;max-width:40em}
+
+/* footer */
+footer{border-top:1px solid var(--line);padding:48px 0 40px;background:var(--ink-2)}
+footer .wrap{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px}
+footer h4{font-family:var(--body);font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;color:var(--dim);margin:0 0 12px;font-weight:600}
+footer ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
+footer a{color:var(--muted);text-decoration:none;font-size:.95rem}
+footer a:hover{color:var(--sea)}
+footer .about p{color:var(--muted);font-size:.95rem;max-width:34em;margin-top:12px}
+.disclaimer{max-width:var(--max);margin:36px auto 0;padding:24px 24px 0;border-top:1px solid var(--line);color:var(--dim);font-size:.82rem;line-height:1.6}
+@media (max-width:760px){footer .wrap{grid-template-columns:1fr}}
+
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn{transition:none}}
+</style>
+</head>
+<body>
+
+<nav class="nav" aria-label="Primary">
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="Notch Music home">
+      <svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="7" fill="#182432"/><path d="M4 22 L9 22 L11 12 L13 22 L15 22 L17 6 L19 26 L21 22 L28 22" fill="none" stroke="#5fc3b0" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/></svg>
+      Notch Music
+    </a>
+    <ul>
+      <li><a href="#how">How it works</a></li>
+      <li><a href="#privacy">Privacy</a></li>
+      <li><a href="#honest">The science</a></li>
+      <li><a href="#faq">FAQ</a></li>
+      <li class="cta"><a class="btn btn-gold" href="https://buy.stripe.com/bJe28s0Gj7dobn2cz22Nq03">Get Notch Music · $49.95</a></li>
+    </ul>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <div class="hero-copy">
+      <span class="eyebrow">Notched music, made from your own songs</span>
+      <h1>Your favorite songs, tuned to your tinnitus.</h1>
+      <p class="lede">Notch Music takes a song you already love and gently removes the one thin sliver of sound that sits at the pitch of your ringing — leaving you a version of the song that's yours to keep.</p>
+      <div class="hero-actions">
+        <a class="btn btn-gold" href="https://buy.stripe.com/bJe28s0Gj7dobn2cz22Nq03">Get Notch Music — $49.95</a>
+        <a class="btn btn-ghost" href="https://tinnitusfitness.com/hear-notched-music.html">Hear a notched sample</a>
+      </div>
+      <p class="hero-fine">One-time purchase · No subscription · Nothing uploaded — your music never leaves your device.</p>
+    </div>
+
+    <div class="demo" aria-label="Interactive notch demonstration">
+      <div class="demo-head">
+        <span class="eyebrow">See the notch</span>
+        <span class="readout num"><span id="hz">6,000</span><small>Hz</small></span>
+      </div>
+      <canvas id="spec" width="920" height="440" role="img" aria-label="A song's frequency spectrum with a narrow notch removed at the chosen pitch"></canvas>
+      <div class="demo-ctrl">
+        <label for="pitch">Your pitch</label>
+        <input type="range" id="pitch" min="0" max="1000" value="807" aria-label="Tinnitus pitch in hertz">
+      </div>
+      <p class="demo-note">Slide to move the notch. In the real tool, the pitch comes from a built-in tone matcher — or the exact number from your audiologist.</p>
+    </div>
+  </div>
+</header>
+
+<div class="strip">
+  <div class="wrap">
+    <div><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18"/></svg><span><strong>$49.95, once</strong>No subscription, nothing to renew.</span></div>
+    <div><svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M11 18h2"/></svg><span><strong>Runs on your device</strong>Phone, tablet or laptop, in the browser you already use.</span></div>
+    <div><svg viewBox="0 0 24 24"><rect x="4" y="10" width="16" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg><span><strong>Nothing uploaded</strong>Your songs are never sent to us or stored anywhere.</span></div>
+    <div><svg viewBox="0 0 24 24"><path d="M4 12l4-1 2-6 3 14 2-8 2 3h3"/></svg><span><strong>Yours to keep</strong>Notch as many songs as you like, for good.</span></div>
+  </div>
+</div>
+
+<section class="block" id="how">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">How it works</span>
+      <h2>Four steps. A few seconds a song.</h2>
+      <p class="lede">Nothing that looks or feels technical — choosing a song is no harder than attaching a photo to an email.</p>
+    </div>
+    <div class="steps">
+      <div class="step"><span class="k">1</span><h3>Pick a song you love</h3><p>Choose any music file on your own device. It never gets uploaded; your device simply opens it.</p></div>
+      <div class="step"><span class="k">2</span><h3>Find your pitch</h3><p>A soft tone slides up and down until it sits right on top of the sound you hear. Have an audiologist's measurement? Type in that exact number for the best results.</p></div>
+      <div class="step"><span class="k">3</span><h3>Notch it</h3><p>In a few seconds the tool removes a narrow band at that exact pitch. The song still sounds like the song — it's just missing a sliver most people never consciously notice.</p></div>
+      <div class="step"><span class="k">4</span><h3>Keep it</h3><p>Your new, notched version saves straight to your device. Play it anywhere, copy it to your phone, come back and notch another.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="block privacy" id="privacy">
+  <div class="wrap">
+    <div class="art" aria-hidden="true">
+      <svg viewBox="0 0 420 300" fill="none">
+        <rect x="70" y="30" width="280" height="200" rx="14" stroke="#2a3a4a" stroke-width="2" fill="#101820"/>
+        <rect x="150" y="238" width="120" height="8" rx="4" fill="#2a3a4a"/>
+        <rect x="110" y="230" width="200" height="8" rx="4" fill="#1e2c3a"/>
+        <path id="wave" d="M95 140 L120 140 L135 100 L150 170 L165 120 L180 150 L195 140 L205 140 L210 60 L215 220 L220 140 L235 140 L250 110 L265 165 L280 125 L295 150 L310 140 L325 140" stroke="#5fc3b0" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        <rect x="203" y="52" width="14" height="176" rx="4" fill="#e8b44c" opacity=".14"/>
+        <path d="M210 56v168" stroke="#e8b44c" stroke-width="1.5" stroke-dasharray="4 5"/>
+        <g stroke="#e8b44c" stroke-width="2" stroke-linecap="round"><path d="M340 90h50M380 80l10 10-10 10" opacity=".0"/></g>
+        <g transform="translate(300,180)"><rect x="0" y="12" width="34" height="26" rx="5" fill="#182432" stroke="#5fc3b0" stroke-width="2"/><path d="M8 12V8a9 9 0 0 1 18 0v4" stroke="#5fc3b0" stroke-width="2"/></g>
+        <text x="210" y="272" text-anchor="middle" fill="#a3b1bf" font-family="IBM Plex Sans, Arial, sans-serif" font-size="13">Processed here. Sent nowhere.</text>
+      </svg>
+    </div>
+    <div class="copy">
+      <span class="eyebrow">Your music never leaves your device</span>
+      <h2>This is the part we're proudest of.</h2>
+      <p class="big">Your song isn't uploaded to us or stored on some server. All of the work happens right on your own phone or computer, in the browser you're already using.</p>
+      <p>A modern browser is a surprisingly capable little workshop. Rather than shipping your song off to a distant kitchen to be cooked, we hand your browser the recipe and it cooks the song on your own counter. Once the tool has loaded, you could switch off your internet entirely and it would still work — nothing is traveling across the network, because the computer doing the work is yours.</p>
+      <p>That also means there's no account to create, no library of your music sitting on our servers, and no monthly fee to keep a server running. It's why we can honestly say the tool is yours for good.</p>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="honest">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">A few honest notes</span>
+      <h2>A gentle practice, not a cure.</h2>
+      <p class="lede">We built a notched-sound tool, and we want you to use it with clear eyes. Here is what to expect — the encouraging parts and the limits.</p>
+    </div>
+    <div class="honest">
+      <article><h3>The evidence is real, and mixed.</h3><p>A 2010 study found that people who listened to their own favorite music with the tinnitus frequency notched out reported lower loudness. Later, more rigorous trials mostly didn't show a clear benefit over placebo, and a 2024 meta-analysis called the evidence limited. It helps some people; for many it does nothing measurable. <a href="https://tinnitusfitness.com/notched-evidence.html">Read our full, cited evidence review →</a></p></article>
+      <article><h3>The right pitch matters most.</h3><p>The whole benefit depends on matching your tinnitus pitch as closely as you can. We help you check it, and it's worth taking your time. Early research suggested the approach works better when the pitch is below about 8 kHz.</p></article>
+      <article><h3>You'll need a song you own as a file.</h3><p>Music you've bought or saved works perfectly. A track that only lives inside a streaming app like Spotify or Apple Music is locked by that app, so it can't be used here.</p></article>
+      <article><h3>Keep the volume gentle.</h3><p>Low enough to be pleasant, never sharp. If a sound ever feels harsh or stirs the ringing up, turn it down or stop — especially if loud sounds already bother you. This is meant to be a comfort, not an endurance test.</p></article>
+      <article><h3>It works on the device you already have.</h3><p>Any reasonably modern phone, tablet or laptop handles a song in seconds. No special equipment, no app to install, no account.</p></article>
+      <article><h3>Best used alongside professional care.</h3><p>Because it hinges on an accurate pitch match and a check of your hearing, an audiologist is exactly who should be involved. Notched listening is one calm, optional part of your day — never a substitute for a care team.</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="get">
+  <div class="wrap">
+    <div class="price">
+      <div class="l">
+        <span class="eyebrow">Get Notch Music</span>
+        <div class="amount num"><sup>$</sup>49<sup>.95</sup><span>one-time · founding price</span></div>
+        <ul>
+          <li><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg><span>Notch as many of your own songs as you like</span></li>
+          <li><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg><span>Built-in pitch finder, or enter your audiologist's measurement</span></li>
+          <li><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg><span>Everything runs on your device — nothing uploaded, ever</span></li>
+          <li><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg><span>No subscription, no account, no renewals</span></li>
+          <li><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg><span>10% of net profits go to tinnitus research</span></li>
+        </ul>
+      </div>
+      <div class="r">
+        <a class="btn btn-gold" href="https://buy.stripe.com/bJe28s0Gj7dobn2cz22Nq03">Get Notch Music — $49.95</a>
+        <p class="fine">Secure checkout by Stripe. After payment you're taken straight to the tool — bookmark the page it opens.</p>
+        <p class="fine">Not sure yet? <a href="https://tinnitusfitness.com/personalized-sound.html">Try the free Personalized Sound tool</a> to feel how notched listening works before you spend a cent.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="faq">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Questions</span>
+      <h2>Things people ask before buying.</h2>
+    </div>
+    <div class="faq">
+      <details><summary>Is Notch Music a cure for tinnitus?</summary><p>No. There is no cure for tinnitus, and notched sound is not one. It may modestly help some people while doing nothing measurable for many others. We'd rather tell you that plainly than sell you a miracle.</p></details>
+      <details><summary>What kind of music files does it work with?</summary><p>Common audio files you own — MP3, M4A/AAC, WAV, FLAC, OGG — anything your browser can open. Songs that exist only inside a streaming app can't be used, because that app keeps them locked.</p></details>
+      <details><summary>Does my song get uploaded anywhere?</summary><p>No. The song is opened and processed in your own browser, on your own device, and the notched copy saves to your device. Nothing is sent to us. Once the tool has loaded, it works with the internet off.</p></details>
+      <details><summary>How do I find my tinnitus pitch?</summary><p>The tool includes a sliding tone matcher: raise or lower a soft tone until it sits on top of the sound you hear. For the most accurate match, have an audiologist measure your pitch and enter that number directly. You can also try the free <a href="https://tinnitusfitness.com/tinnitus-frequency-finder.html">Tinnitus Frequency Finder</a> first.</p></details>
+      <details><summary>How long before it might help?</summary><p>Studies that saw any effect involved consistent daily listening over weeks to months, at a comfortable volume. Give it a fair, patient trial and keep expectations realistic.</p></details>
+      <details><summary>What do I get after I pay?</summary><p>Stripe takes you straight to the tool, which opens in your browser. Bookmark it — that link is your copy. If you ever lose it, reach us through <a href="https://tinnitusfitness.com/#contact">tinnitusfitness.com</a> and we'll send it again.</p></details>
+      <details><summary>Will it work on my phone?</summary><p>Yes — any reasonably modern phone, tablet or laptop, in Chrome, Safari or Edge. Very old devices may be slower with long files.</p></details>
+      <details><summary>Should I stop other treatments to do this?</summary><p>No. Notched listening should complement, not replace, comprehensive tinnitus care and professional guidance.</p></details>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="about">
+      <a class="brand" href="#top"><svg viewBox="0 0 32 32" aria-hidden="true"><rect width="32" height="32" rx="7" fill="#101820"/><path d="M4 22 L9 22 L11 12 L13 22 L15 22 L17 6 L19 26 L21 22 L28 22" fill="none" stroke="#5fc3b0" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/></svg>Notch Music</a>
+      <p>Notch Music is part of <a href="https://tinnitusfitness.com">Tinnitus Fitness</a> and an optional practice within <em>The Tinnitus Mental Fitness Model</em>, by Diallo Kantambu — a peer-to-peer guide to relief written by someone who hears it too.</p>
+    </div>
+    <div>
+      <h4>Learn more</h4>
+      <ul>
+        <li><a href="https://tinnitusfitness.com/how-notch-music-works.html">How Notch Music works</a></li>
+        <li><a href="https://tinnitusfitness.com/notched-evidence.html">Does notched sound work?</a></li>
+        <li><a href="https://tinnitusfitness.com/hear-notched-music.html">Hear a notched sample</a></li>
+        <li><a href="https://tinnitusfitness.com/how-to-notch-your-own-music.html">Notch your music yourself</a></li>
+      </ul>
+    </div>
+    <div>
+      <h4>Free tools</h4>
+      <ul>
+        <li><a href="https://tinnitusfitness.com/tinnitus-frequency-finder.html">Tinnitus Frequency Finder</a></li>
+        <li><a href="https://tinnitusfitness.com/personalized-sound.html">Personalized Sound</a></li>
+        <li><a href="https://tinnitusfitness.com/weekly.html">The Tinnitus Fitness Weekly</a></li>
+        <li><a href="https://www.amazon.com/dp/B0HGVL3W2G">The book</a></li>
+      </ul>
+    </div>
+  </div>
+  <p class="disclaimer">Notch Music is an optional practice within the Tinnitus Mental Fitness Model. It is not a medical treatment, device, or cure, and this page is not medical advice. Tinnitus has many causes and responds differently from person to person — please talk with an audiologist or physician about your own tinnitus and hearing before starting any sound-based practice. If a sound ever feels harsh, turn it down or stop. © 2026 Tinnitus Fitness.</p>
+</footer>
+
+<script>
+(function(){
+  var c=document.getElementById('spec'),x=c.getContext('2d'),slider=document.getElementById('pitch'),hzEl=document.getElementById('hz');
+  var W=c.width,H=c.height,PAD={l:14,r:14,t:18,b:34};
+  var FMIN=100,FMAX=16000,LMIN=Math.log(FMIN),LMAX=Math.log(FMAX);
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var N=96,seed=[],i;
+  for(i=0;i<N;i++){seed.push(Math.random());}
+  function fx(f){return PAD.l+(Math.log(f)-LMIN)/(LMAX-LMIN)*(W-PAD.l-PAD.r);}
+  function fOf(v){return Math.exp(LMIN+(v/1000)*(LMAX-LMIN));}
+  function fmt(f){return Math.round(f).toString().replace(/\B(?=(\d{3})+(?!\d))/g,',');}
+  var pitch=fOf(+slider.value);
+  function draw(t){
+    x.clearRect(0,0,W,H);
+    // grid + ticks
+    x.strokeStyle='#1e2c3a';x.lineWidth=1;x.font='12px "IBM Plex Sans",Arial,sans-serif';x.fillStyle='#6f8090';x.textAlign='center';
+    [125,250,500,1000,2000,4000,8000,16000].forEach(function(f){var px=fx(f);x.beginPath();x.moveTo(px,PAD.t);x.lineTo(px,H-PAD.b);x.stroke();x.fillText(f>=1000?(f/1000)+'k':f,px,H-12);});
+    x.textAlign='left';x.fillText('Hz',PAD.l,H-12);
+    // spectrum bars
+    var bw=(W-PAD.l-PAD.r)/N,base=H-PAD.b,top=PAD.t;
+    var nx=fx(pitch);
+    for(i=0;i<N;i++){
+      var f=Math.exp(LMIN+(i+.5)/N*(LMAX-LMIN));
+      var env=Math.pow(1-(Math.log(f)-LMIN)/(LMAX-LMIN),.9)*.75+.12; // music: more energy low
+      var wob=reduce?0:Math.sin(t/900+i*.6)*.05+Math.sin(t/430+i*1.7)*.035;
+      var amp=Math.min(1,Math.max(.05,env+seed[i]*.28-.14+wob));
+      // notch: narrow band-stop centred on pitch (in log space)
+      var d=Math.abs(Math.log(f)-Math.log(pitch))/0.085; // ~1/8 octave half-width
+      var notch=Math.exp(-d*d*2);
+      amp*= (1-notch*.97);
+      var h=amp*(base-top);
+      var bx=PAD.l+i*bw+1;
+      x.fillStyle=notch>.15?'rgba(95,195,176,.35)':'#5fc3b0';
+      x.fillRect(bx,base-h,bw-2,h);
+    }
+    // notch marker
+    x.fillStyle='rgba(232,180,76,.10)';x.fillRect(nx-9,top,18,base-top);
+    x.strokeStyle='#e8b44c';x.setLineDash([4,5]);x.beginPath();x.moveTo(nx,top);x.lineTo(nx,base);x.stroke();x.setLineDash([]);
+    x.fillStyle='#e8b44c';x.font='600 12px "IBM Plex Sans",Arial,sans-serif';x.textAlign=nx>W*.7?'right':'left';
+    x.fillText('notch',nx+(nx>W*.7?-8:8),top+12);
+    if(!reduce)requestAnimationFrame(draw);
+  }
+  slider.addEventListener('input',function(){pitch=fOf(+slider.value);hzEl.textContent=fmt(pitch);if(reduce)draw(0);});
+  hzEl.textContent=fmt(pitch);
+  draw(0);
+})();
+</script>
+</body>
+</html>
