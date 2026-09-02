@@ -1,0 +1,17 @@
+[build]
+  publish = "public"
+  functions = "netlify/functions"
+
+[functions]
+  node_bundler = "esbuild"
+
+[[redirects]]
+  from = "/success"
+  to = "/success.html"
+  status = 200
+
+[[headers]]
+  for = "/success.html"
+  [headers.values]
+    X-Robots-Tag = "noindex"
+    Cache-Control = "no-store"
