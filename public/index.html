@@ -166,6 +166,31 @@ footer .about p{color:var(--muted);font-size:.95rem;max-width:34em;margin-top:12
 @media (max-width:760px){footer .wrap{grid-template-columns:1fr}}
 
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn{transition:none}}
+
+/* hear-it A/B player */
+.ab{display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin-top:26px}
+.ab-play{width:56px;height:56px;flex:none;border:0;border-radius:50%;cursor:pointer;
+  background:var(--gold);color:var(--gold-ink);display:grid;place-items:center;transition:transform .15s}
+.ab-play:hover{transform:scale(1.05)}
+.ab-switch{display:inline-flex;border:1px solid var(--line);border-radius:999px;overflow:hidden}
+.ab-switch button{background:transparent;border:0;color:var(--muted);font:600 .9rem/1 var(--body);
+  padding:.75em 1.25em;cursor:pointer;transition:background .15s,color .15s}
+.ab-switch button[aria-pressed=true]{background:var(--sea-soft);color:var(--sea)}
+.ab-time{font-variant-numeric:tabular-nums;color:var(--dim);font-size:.9rem}
+/* studies */
+.studies{margin-top:8px}
+.studies article{display:grid;grid-template-columns:120px minmax(0,1fr);gap:24px;
+  padding:22px 0;border-top:1px solid var(--line)}
+.studies .yr{font-family:var(--display);font-size:1.6rem;color:var(--gold);line-height:1.1}
+.studies .yr small{display:block;font-family:var(--body);font-size:.72rem;letter-spacing:.1em;
+  text-transform:uppercase;color:var(--dim);margin-top:.4em;font-weight:600}
+.studies h3{font-size:1.06rem;margin-bottom:.4em}
+.studies p{color:var(--muted);font-size:.97rem;margin:0 0 .5em}
+.studies .cite{font-size:.83rem;color:var(--dim)}
+.verdict{margin-top:30px;padding:24px;border:1px solid var(--line);border-radius:14px;
+  background:var(--ink-2);color:var(--muted);max-width:48em}
+@media(max-width:640px){.studies article{grid-template-columns:1fr;gap:6px}
+  .studies .yr small{display:inline;margin-left:.6em}}
 </style>
 
 <script type="application/ld+json">
@@ -208,6 +233,26 @@ footer .about p{color:var(--muted);font-size:.95rem;max-width:34em;margin-top:12
         "category": "One-time purchase"
       }
     }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+      { "@type": "Question", "name": "Is Notch Music a cure for tinnitus?", "acceptedAnswer": { "@type": "Answer", "text": "No. There is no cure for tinnitus, and notched sound is not one. It may modestly help some people while doing nothing measurable for many others. We'd rather tell you that plainly than sell you a miracle." } },
+      { "@type": "Question", "name": "What kind of music files does it work with?", "acceptedAnswer": { "@type": "Answer", "text": "Common audio files you own — MP3, M4A/AAC, WAV, FLAC, OGG — anything your browser can open. Songs that exist only inside a streaming app can't be used, because that app keeps them locked." } },
+      { "@type": "Question", "name": "Does my song get uploaded anywhere?", "acceptedAnswer": { "@type": "Answer", "text": "No. The song is opened and processed in your own browser, on your own device, and the notched copy saves to your device. Nothing is sent to us. Once the tool has loaded, it works with the internet off." } },
+      { "@type": "Question", "name": "How do I find my tinnitus pitch?", "acceptedAnswer": { "@type": "Answer", "text": "The tool includes a sliding tone matcher: raise or lower a soft tone until it sits on top of the sound you hear. For the most accurate match, have an audiologist measure your pitch and enter that number directly. You can also try the free Tinnitus Frequency Finder first." } },
+      { "@type": "Question", "name": "How long before it might help?", "acceptedAnswer": { "@type": "Answer", "text": "Studies that saw any effect involved consistent daily listening over weeks to months, at a comfortable volume. Give it a fair, patient trial and keep expectations realistic." } },
+      { "@type": "Question", "name": "What do I get after I pay?", "acceptedAnswer": { "@type": "Answer", "text": "Stripe takes you straight to the tool, which opens in your browser. Bookmark it — that link is your copy. If you ever lose it, reach us through tinnitusfitness.com and we'll send it again." } },
+      { "@type": "Question", "name": "Will it work on my phone?", "acceptedAnswer": { "@type": "Answer", "text": "Yes — any reasonably modern phone, tablet or laptop, in Chrome, Safari or Edge. Very old devices may be slower with long files." } },
+      { "@type": "Question", "name": "Should I stop other treatments to do this?", "acceptedAnswer": { "@type": "Answer", "text": "No. Notched listening should complement, not replace, comprehensive tinnitus care and professional guidance." } },
+      { "@type": "Question", "name": "How wide is the notch?", "acceptedAnswer": { "@type": "Answer", "text": "One octave, centred on your pitch — half an octave either side, the width used in the published research. At a 4,000 Hz pitch that means removing everything between roughly 2,828 and 5,657 Hz." } },
+      { "@type": "Question", "name": "Won't that wreck the music?", "acceptedAnswer": { "@type": "Answer", "text": "Less than you would expect — the clip above is the honest test. A one-octave gap up in the treble takes some brightness out of cymbals and sibilance, and on some tracks you will hear it. Most people stop noticing within a few days. If a particular song sounds gutted, pick a different song." } },
+      { "@type": "Question", "name": "Can I use it with hearing aids?", "acceptedAnswer": { "@type": "Answer", "text": "Ask your audiologist. Hearing aids amplify in exactly the range you are trying to leave empty, which can partly undo the notch. Several manufacturers also build notch-style therapy into their devices — if yours does, use that instead of this." } },
+      { "@type": "Question", "name": "What if it does nothing for me?", "acceptedAnswer": { "@type": "Answer", "text": "That is a common outcome, and the research above is the reason to expect it. Give it three months of honest listening, tracking how much the tinnitus intrudes rather than how loud it seems. If nothing has shifted, stop — and put the effort into the parts of tinnitus care that carry more weight for most people. Write to us about a refund and we will sort it out." } }
   ]
 }
 </script>
@@ -283,6 +328,27 @@ footer .about p{color:var(--muted);font-size:.95rem;max-width:34em;margin-top:12
   </div>
 </section>
 
+<section class="block" id="hear">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Hear it</span>
+      <h2>The same twelve seconds, twice.</h2>
+      <p class="lede">One clip untouched, one with a notch cut at 6&nbsp;kHz. Most people are surprised by how little the music loses — that is rather the point.</p>
+    </div>
+    <div class="ab">
+      <button class="ab-play" id="abPlay" type="button" aria-label="Play">
+        <svg viewBox="0 0 24 24" width="22" height="22" aria-hidden="true"><path id="abIcon" d="M6 4l14 8-14 8z" fill="currentColor"></path></svg>
+      </button>
+      <div class="ab-switch" role="group" aria-label="Choose original or notched">
+        <button type="button" id="abA" aria-pressed="true">Original</button>
+        <button type="button" id="abB" aria-pressed="false">Notched at 6 kHz</button>
+      </div>
+      <span class="ab-time" id="abTime">0:00</span>
+    </div>
+    <p class="demo-note">Switch between them while it plays — the track keeps its place, so you hear the same moment both ways. Headphones make the difference easier to catch. This is a fixed 6&nbsp;kHz demonstration; the tool notches at <em>your</em> pitch, on your own music.</p>
+  </div>
+</section>
+
 <section class="block privacy" id="privacy">
   <div class="wrap">
     <div class="art" aria-hidden="true">
@@ -316,13 +382,66 @@ footer .about p{color:var(--muted);font-size:.95rem;max-width:34em;margin-top:12
       <p class="lede">We built a notched-sound tool, and we want you to use it with clear eyes. Here is what to expect — the encouraging parts and the limits.</p>
     </div>
     <div class="honest">
-      <article><h3>The evidence is real, and mixed.</h3><p>A 2010 study found that people who listened to their own favorite music with the tinnitus frequency notched out reported lower loudness. Later, more rigorous trials mostly didn't show a clear benefit over placebo, and a 2024 meta-analysis called the evidence limited. It helps some people; for many it does nothing measurable. <a href="https://tinnitusfitness.com/notched-evidence.html">Read our full, cited evidence review →</a></p></article>
+      <article><h3>The evidence is real, and mixed.</h3><p>A 2010 study found that people who listened to their own favorite music with the tinnitus frequency notched out reported lower loudness. Later, more rigorous trials mostly didn't show a clear benefit over placebo, and a 2024 meta-analysis called the evidence limited. It helps some people; for many it does nothing measurable. <a href="#evidence">Read the studies, one by one →</a></p></article>
       <article><h3>The right pitch matters most.</h3><p>The whole benefit depends on matching your tinnitus pitch as closely as you can. We help you check it, and it's worth taking your time. Early research suggested the approach works better when the pitch is below about 8 kHz.</p></article>
       <article><h3>You'll need a song you own as a file.</h3><p>Music you've bought or saved works perfectly. A track that only lives inside a streaming app like Spotify or Apple Music is locked by that app, so it can't be used here.</p></article>
       <article><h3>Keep the volume gentle.</h3><p>Low enough to be pleasant, never sharp. If a sound ever feels harsh or stirs the ringing up, turn it down or stop — especially if loud sounds already bother you. This is meant to be a comfort, not an endurance test.</p></article>
       <article><h3>It works on the device you already have.</h3><p>Any reasonably modern phone, tablet or laptop handles a song in seconds. No special equipment, no app to install, no account.</p></article>
       <article><h3>Best used alongside professional care.</h3><p>Because it hinges on an accurate pitch match and a check of your hearing, an audiologist is exactly who should be involved. Notched listening is one calm, optional part of your day — never a substitute for a care team.</p></article>
     </div>
+  </div>
+</section>
+
+<section class="block" id="evidence">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">The receipts</span>
+      <h2>The research, study by study.</h2>
+      <p class="lede">Most pages selling notched sound quote the 2010 study and stop. Here is the rest of it, including the results that did not go the way anyone hoped.</p>
+    </div>
+    <div class="studies">
+      <article>
+        <div class="yr">2010<small>The first result</small></div>
+        <div>
+          <h3>Twelve months of notched music lowered perceived loudness</h3>
+          <p>Sixteen people with chronic tinnitus listened to their own favourite music — half with the tinnitus band removed, half with a sham notch elsewhere. After a year the notched group reported significantly quieter tinnitus, and brain recordings showed reduced activity in the area matching their tinnitus frequency. Eight people per group.</p>
+          <p class="cite">Okamoto, Stracke, Stoll &amp; Pantev, <em>PNAS</em> 107(3), 1207–10. <a href="https://doi.org/10.1073/pnas.0911268107" rel="noopener">doi:10.1073/pnas.0911268107</a></p>
+        </div>
+      </article>
+      <article>
+        <div class="yr">2011<small>Who it suits</small></div>
+        <div>
+          <h3>It worked below 8,000 Hz — and the effect faded</h3>
+          <p>An intensive version reduced loudness and distress in people whose pitch was at or below 8,000 Hz. Above 8,000 Hz, nothing measurable changed. The gains did not hold once the listening stopped, which is why this is framed as an ongoing practice rather than a course of treatment.</p>
+          <p class="cite">Teismann, Okamoto &amp; Pantev, <em>PLoS ONE</em> 6(9), e24685. <a href="https://doi.org/10.1371/journal.pone.0024685" rel="noopener">doi:10.1371/journal.pone.0024685</a></p>
+        </div>
+      </article>
+      <article>
+        <div class="yr">2016<small>The big trial</small></div>
+        <div>
+          <h3>One hundred people, three months, mixed result</h3>
+          <p>The first properly powered, double-blind, randomised trial. Two hours a day for three months produced <strong>no change</strong> on the study's main measures of tinnitus handicap and distress. One month after training ended, perceived loudness was significantly lower in the notched group — a real but narrow win, on a secondary measure.</p>
+          <p class="cite">Stein, Wunderlich, Lau et al., <em>BMC Neurology</em> 16, 38. <a href="https://doi.org/10.1186/s12883-016-0558-7" rel="noopener">doi:10.1186/s12883-016-0558-7</a></p>
+        </div>
+      </article>
+      <article>
+        <div class="yr">2024<small>Pooled evidence</small></div>
+        <div>
+          <h3>Two reviews, and neither could show it beats ordinary music</h3>
+          <p>One meta-analysis pooled the trials comparing notched music against simply listening to music and found no significant difference. A second review of seven trials found no statistically significant effect on tinnitus handicap at three or six months, though four of five studies using a simple loudness or annoyance rating did show improvement. Both end the same way: the trials are few and small, and better ones are needed.</p>
+          <p class="cite">Scarpa, Carucci, De Luca et al., <em>Am J Otolaryngol</em> 45(6), 104467, <a href="https://doi.org/10.1016/j.amjoto.2024.104467" rel="noopener">doi:10.1016/j.amjoto.2024.104467</a> · Tavanai, Rahimi, Bandad et al., <em>Eur Arch Otorhinolaryngol</em> 281(10), 5033–49, <a href="https://doi.org/10.1007/s00405-024-08732-8" rel="noopener">doi:10.1007/s00405-024-08732-8</a></p>
+        </div>
+      </article>
+      <article>
+        <div class="yr">2024<small>Still being studied</small></div>
+        <div>
+          <h3>The short quiet spell after listening is measurable</h3>
+          <p>Many people notice their tinnitus dips for a few minutes after sound stops — residual inhibition. An EEG study of notched music found this after-effect involves not only the hearing areas of the brain but the emotional and memory networks tied to how much tinnitus bothers you.</p>
+          <p class="cite">Zhu &amp; Gong, <em>Hearing Research</em> 457, 109129. <a href="https://doi.org/10.1016/j.heares.2024.109129" rel="noopener">doi:10.1016/j.heares.2024.109129</a> — records retrieved from PubMed.</p>
+        </div>
+      </article>
+    </div>
+    <p class="verdict">So where does that leave you? Somewhere honest. The mechanism is real hearing science, not marketing, and the early findings were genuinely encouraging — but the larger and more careful the trial, the smaller the effect got. Notched music has not been shown to beat the simple act of listening to music you enjoy. That is not a reason to dismiss it; it is a reason to size it correctly: a low-cost, low-risk practice with a plausible mechanism and modest, uncertain returns, best suited to a steady tonal pitch at or below 8,000 Hz.</p>
   </div>
 </section>
 
@@ -364,6 +483,11 @@ footer .about p{color:var(--muted);font-size:.95rem;max-width:34em;margin-top:12
       <details><summary>What do I get after I pay?</summary><p>Stripe takes you straight to the tool, which opens in your browser. Bookmark it — that link is your copy. If you ever lose it, reach us through <a href="https://tinnitusfitness.com/#contact">tinnitusfitness.com</a> and we'll send it again.</p></details>
       <details><summary>Will it work on my phone?</summary><p>Yes — any reasonably modern phone, tablet or laptop, in Chrome, Safari or Edge. Very old devices may be slower with long files.</p></details>
       <details><summary>Should I stop other treatments to do this?</summary><p>No. Notched listening should complement, not replace, comprehensive tinnitus care and professional guidance.</p></details>
+      <details><summary>How wide is the notch?</summary><p>One octave, centred on your pitch — half an octave either side, the width used in the published research. At a 4,000 Hz pitch that means removing everything between roughly 2,828 and 5,657 Hz.</p></details>
+      <details><summary>Won't that wreck the music?</summary><p>Less than you would expect — the clip above is the honest test. A one-octave gap up in the treble takes some brightness out of cymbals and sibilance, and on some tracks you will hear it. Most people stop noticing within a few days. If a particular song sounds gutted, pick a different song.</p></details>
+      <details><summary>Can I use it with hearing aids?</summary><p>Ask your audiologist. Hearing aids amplify in exactly the range you are trying to leave empty, which can partly undo the notch. Several manufacturers also build notch-style therapy into their devices — if yours does, use that instead of this.</p></details>
+      <details><summary>What if it does nothing for me?</summary><p>That is a common outcome, and the research above is the reason to expect it. Give it three months of honest listening, tracking how much the tinnitus intrudes rather than how loud it seems. If nothing has shifted, stop — and put the effort into the parts of tinnitus care that carry more weight for most people. Write to us about a refund and we will sort it out.</p></details>
+
     </div>
   </div>
 </section>
@@ -442,6 +566,55 @@ footer .about p{color:var(--muted);font-size:.95rem;max-width:34em;margin-top:12
   slider.addEventListener('input',function(){pitch=fOf(+slider.value);hzEl.textContent=fmt(pitch);if(reduce)draw(0);});
   hzEl.textContent=fmt(pitch);
   draw(0);
+})();
+</script>
+
+<script>
+(function(){
+  var SRC = {
+    a: 'https://tinnitusfitness.com/notch-demo-original.mp3',
+    b: 'https://tinnitusfitness.com/notch-demo-notched.mp3'
+  };
+  var play = document.getElementById('abPlay'); if (!play) return;
+  var icon = document.getElementById('abIcon'), time = document.getElementById('abTime');
+  var btnA = document.getElementById('abA'), btnB = document.getElementById('abB');
+  var audio = { a: new Audio(SRC.a), b: new Audio(SRC.b) };
+  audio.a.preload = 'none'; audio.b.preload = 'none';
+  var cur = 'a', playing = false;
+
+  function icons(on){
+    icon.setAttribute('d', on ? 'M6 4h4v16H6zM14 4h4v16h-4z' : 'M6 4l14 8-14 8z');
+    play.setAttribute('aria-label', on ? 'Pause' : 'Play');
+  }
+  function fmt(s){ s = Math.max(0, s|0); return (s/60|0) + ':' + ('0' + (s%60)).slice(-2); }
+  function tick(){
+    var el = audio[cur];
+    time.textContent = fmt(el.currentTime) + (el.duration ? ' / ' + fmt(el.duration) : '');
+    if (playing) requestAnimationFrame(tick);
+  }
+  play.addEventListener('click', function(){
+    var el = audio[cur];
+    if (playing){ el.pause(); playing = false; icons(false); }
+    else { el.play().then(function(){ playing = true; icons(true); tick(); }).catch(function(){}); }
+  });
+  function pick(which){
+    if (which === cur) return;
+    var from = audio[cur], to = audio[which], at = from.currentTime;
+    from.pause();
+    cur = which;
+    btnA.setAttribute('aria-pressed', String(which === 'a'));
+    btnB.setAttribute('aria-pressed', String(which === 'b'));
+    to.currentTime = at || 0;
+    if (playing) to.play().catch(function(){});
+    tick();
+  }
+  btnA.addEventListener('click', function(){ pick('a'); });
+  btnB.addEventListener('click', function(){ pick('b'); });
+  ['a','b'].forEach(function(k){
+    audio[k].addEventListener('ended', function(){
+      playing = false; icons(false); audio.a.currentTime = 0; audio.b.currentTime = 0; tick();
+    });
+  });
 })();
 </script>
 </body>
