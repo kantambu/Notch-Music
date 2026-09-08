@@ -332,8 +332,8 @@ footer .about p{color:var(--muted);font-size:.95rem;max-width:34em;margin-top:12
   <div class="wrap">
     <div class="sec-head">
       <span class="eyebrow">Hear it</span>
-      <h2>The same twelve seconds, twice.</h2>
-      <p class="lede">One clip untouched, one with a notch cut at 6&nbsp;kHz. Most people are surprised by how little the music loses — that is rather the point.</p>
+      <h2>The same twenty seconds, twice.</h2>
+      <p class="lede">One clip untouched, one with a one-octave band lifted out around 4&nbsp;kHz — roughly 3,000 to 6,000&nbsp;Hz gone. Most people are surprised by how little the music loses. That is rather the point.</p>
     </div>
     <div class="ab">
       <button class="ab-play" id="abPlay" type="button" aria-label="Play">
@@ -341,11 +341,11 @@ footer .about p{color:var(--muted);font-size:.95rem;max-width:34em;margin-top:12
       </button>
       <div class="ab-switch" role="group" aria-label="Choose original or notched">
         <button type="button" id="abA" aria-pressed="true">Original</button>
-        <button type="button" id="abB" aria-pressed="false">Notched at 6 kHz</button>
+        <button type="button" id="abB" aria-pressed="false">Notched at 4 kHz</button>
       </div>
       <span class="ab-time" id="abTime">0:00</span>
     </div>
-    <p class="demo-note">Switch between them while it plays — the track keeps its place, so you hear the same moment both ways. Headphones make the difference easier to catch. This is a fixed 6&nbsp;kHz demonstration; the tool notches at <em>your</em> pitch, on your own music.</p>
+    <p class="demo-note">Switch between them while it plays — the track keeps its place, so you hear the same moment both ways. Headphones make the difference easier to catch. This is one fixed demonstration notch; the tool cuts at <em>your</em> pitch, on your own music.</p>
   </div>
 </section>
 
@@ -572,14 +572,17 @@ footer .about p{color:var(--muted);font-size:.95rem;max-width:34em;margin-top:12
 <script>
 (function(){
   var SRC = {
-    a: 'https://tinnitusfitness.com/notch-demo-original.mp3',
-    b: 'https://tinnitusfitness.com/notch-demo-notched.mp3'
+    a: '/notch-demo-original.mp3',
+    b: '/notch-demo-notched.mp3'
   };
   var play = document.getElementById('abPlay'); if (!play) return;
   var icon = document.getElementById('abIcon'), time = document.getElementById('abTime');
   var btnA = document.getElementById('abA'), btnB = document.getElementById('abB');
   var audio = { a: new Audio(SRC.a), b: new Audio(SRC.b) };
-  audio.a.preload = 'none'; audio.b.preload = 'none';
+  audio.a.preload = 'metadata'; audio.b.preload = 'metadata';
+  ['a','b'].forEach(function(k){
+    audio[k].addEventListener('error', function(){ time.textContent = 'clip unavailable'; });
+  });
   var cur = 'a', playing = false;
 
   function icons(on){
@@ -595,7 +598,10 @@ footer .about p{color:var(--muted);font-size:.95rem;max-width:34em;margin-top:12
   play.addEventListener('click', function(){
     var el = audio[cur];
     if (playing){ el.pause(); playing = false; icons(false); }
-    else { el.play().then(function(){ playing = true; icons(true); tick(); }).catch(function(){}); }
+    else {
+      el.play().then(function(){ playing = true; icons(true); tick(); })
+        .catch(function(){ time.textContent = 'clip unavailable'; });
+    }
   });
   function pick(which){
     if (which === cur) return;
