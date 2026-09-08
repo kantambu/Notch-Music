@@ -13,12 +13,21 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Notch Music</title>
 <meta name="description" content="Notch Music takes a song you already love and removes the thin sliver of sound at the pitch of your tinnitus — entirely on your own device. One-time $49.95, no subscription, no uploads.">
-<!-- TODO: set the final domain before launch -->
-<link rel="canonical" href="https://YOUR-DOMAIN/">
+<link rel="canonical" href="https://notch-music.com/">
 <meta property="og:title" content="Notch Music — your favorite songs, tuned to your tinnitus">
 <meta property="og:description" content="Match your tinnitus pitch, pick a song you love, and notch it right in your browser. $49.95 once. No subscription. Your music never leaves your device.">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://YOUR-DOMAIN/">
+<meta property="og:site_name" content="Notch Music">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://notch-music.com/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Notch Music — your favorite songs, tuned to your tinnitus, beside the cover of The Tinnitus Mental Fitness Model">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Notch Music — your favorite songs, tuned to your tinnitus">
+<meta name="twitter:description" content="Match your tinnitus pitch, pick a song you love, and notch it right in your browser. $49.95 once, nothing uploaded.">
+<meta name="twitter:image" content="https://notch-music.com/og-image.jpg">
+<meta property="og:url" content="https://notch-music.com/">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23101820'/%3E%3Cpath d='M4 22 L9 22 L11 12 L13 22 L15 22 L17 6 L19 26 L21 22 L28 22' fill='none' stroke='%235FC3B0' stroke-width='2.4' stroke-linejoin='round' stroke-linecap='round'/%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -158,6 +167,50 @@ footer .about p{color:var(--muted);font-size:.95rem;max-width:34em;margin-top:12
 
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn{transition:none}}
 </style>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://notch-music.com/#website",
+      "url": "https://notch-music.com/",
+      "name": "Notch Music",
+      "description": "Notched sound therapy for tinnitus, run on music you already own \u2014 entirely on your own device.",
+      "publisher": { "@id": "https://notch-music.com/#publisher" },
+      "inLanguage": "en-US"
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://notch-music.com/#publisher",
+      "name": "MoonHorizon Media, LLC",
+      "url": "https://tinnitusfitness.com/",
+      "sameAs": ["https://tinnitusfitness.com/", "https://www.youtube.com/@TinnitusFitness"],
+      "address": { "@type": "PostalAddress", "addressLocality": "Houston", "addressRegion": "TX", "addressCountry": "US" }
+    },
+    {
+      "@type": "SoftwareApplication",
+      "name": "Notch Music",
+      "applicationCategory": "HealthApplication",
+      "operatingSystem": "Any modern web browser",
+      "url": "https://notch-music.com/",
+      "image": "https://notch-music.com/og-image.jpg",
+      "author": { "@type": "Person", "name": "Diallo Kantambu", "url": "https://tinnitusfitness.com/" },
+      "publisher": { "@id": "https://notch-music.com/#publisher" },
+      "description": "Match your tinnitus pitch and remove that band from a song you already love. The audio is processed in your own browser; nothing is uploaded.",
+      "offers": {
+        "@type": "Offer",
+        "price": "49.95",
+        "priceCurrency": "USD",
+        "url": "https://notch-music.com/",
+        "availability": "https://schema.org/InStock",
+        "category": "One-time purchase"
+      }
+    }
+  ]
+}
+</script>
 </head>
 <body>
 
